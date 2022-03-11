@@ -31,7 +31,7 @@ namespace Store.API.Controllers
         [HttpGet("{id:length(24)}", Name = "GetItem")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Item), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Item>> GetProduct(string id)
+        public async Task<ActionResult<Item>> GetItem(string id)
         {
             var item = await _repo.GetItemById(id);
 
@@ -46,7 +46,7 @@ namespace Store.API.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(Item), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Item>> CreateProduct([FromBody] ItemDto itemDto)
+        public async Task<ActionResult<Item>> CreateItem([FromBody] ItemDto itemDto)
         {
             var item = await _repo.CreateItem(itemDto);
 

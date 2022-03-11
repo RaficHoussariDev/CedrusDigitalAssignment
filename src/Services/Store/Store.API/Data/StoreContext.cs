@@ -11,7 +11,7 @@ namespace Store.API.Data
             var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
             Items = database.GetCollection<Item>(configuration.GetValue<string>("DatabaseSettings:CollectionName"));
 
-            StoreContextSeed.SeedData(Items);
+            //StoreContextSeed.SeedData(Items);
         }
         public IMongoCollection<Item> Items { get; }
     }

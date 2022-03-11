@@ -7,6 +7,12 @@ services:
     ports:
       - "27017:27017"
 
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"
+
   store.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -15,3 +21,13 @@ services:
       - storedb
     ports:
       - "8000:80"
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings:ConnectionString=basketdb:6379"
+    depends_on:
+      - basketdb
+    ports:
+      - "8001:80"
+
