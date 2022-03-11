@@ -10,5 +10,7 @@ services:
   store.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - storedb
     ports:
       - "8000:80"
